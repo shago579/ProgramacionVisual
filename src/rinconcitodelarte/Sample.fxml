@@ -17,18 +17,18 @@
           <menus>
             <Menu mnemonicParsing="false" text="Alumnos">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#agregarAlum" text="Nuevo Alumno" fx:id="AgregNueAlum" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#agregarAlum" text="Nuevo Alumno" fx:id="AgregNueAlum" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Profesores">
               <items>
-                <MenuItem mnemonicParsing="false" text="Agregar" fx:id="AgregarProfItem" />
+                <MenuItem disable="true" mnemonicParsing="false" style="" text="Nuevo Profesor" fx:id="AgregarProfItem" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Administradores">
               <items>
                 <MenuItem mnemonicParsing="false" text="Agregar" fx:id="AgregarAdmItem" />
-                <MenuItem mnemonicParsing="false" text="Inicio de Sesión" fx:id="iniSesion" />
+                <MenuItem mnemonicParsing="false" onAction="#iniciarSesion" text="Inicio de Sesión" fx:id="iniSesion" />
                 <MenuItem disable="true" mnemonicParsing="false" text="Cerrar Sesión" fx:id="closeSesion" />
               </items>
             </Menu>
@@ -47,21 +47,21 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Pane fx:id="recipienteReloj" layoutX="158.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                <Pane fx:id="recipienteReloj" layoutX="158.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0">
                   <children>
                     <Circle fill="#bfbfbf" layoutX="99.0" layoutY="101.0" radius="100.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" />
                     <Line fx:id="hora" endX="-100.0" endY="-81.0" layoutX="199.0" layoutY="102.0" startX="-100.0" />
                     <Line fx:id="minutero" endX="-59.0" endY="1.0" layoutX="200.0" layoutY="102.0" startX="-100.0" />
                   </children>
                 </Pane>
-                <Pane layoutX="79.0" layoutY="31.0" prefHeight="330.0" prefWidth="395.0">
+                <Pane fx:id="panelDatos" layoutX="79.0" layoutY="31.0" prefHeight="330.0" prefWidth="395.0" visible="false">
                   <children>
                     <Label layoutX="69.0" layoutY="43.0" text="Nombre" />
                     <Label layoutX="69.0" layoutY="94.0" text="Apellido" />
                     <Label layoutX="69.0" layoutY="157.0" text="Taller" />
-                    <TextField layoutX="134.0" layoutY="40.0" prefWidth="200.0" />
-                    <TextField layoutX="134.0" layoutY="99.0" prefWidth="200.0" />
-                    <ComboBox layoutX="141.0" layoutY="158.0" prefHeight="21.0" prefWidth="187.0" promptText="Elije un Taller...">
+                    <TextField fx:id="txtNombre" layoutX="134.0" layoutY="40.0" prefWidth="200.0" />
+                    <TextField fx:id="txtApellido" layoutX="134.0" layoutY="99.0" prefWidth="200.0" />
+                    <ComboBox fx:id="chusTaller" layoutX="141.0" layoutY="158.0" prefHeight="21.0" prefWidth="187.0" promptText="Elije un Taller...">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Guitarra" />
@@ -71,21 +71,34 @@
                         </FXCollections>
                       </items>
                     </ComboBox>
-                    <Button fx:id="aceppt" layoutX="278.0" layoutY="277.0" mnemonicParsing="false" text="Aceptar" />
+                    <Button fx:id="aceppt" layoutX="278.0" layoutY="277.0" mnemonicParsing="false" onAction="#aceptarAlum" text="Aceptar" />
+                  </children>
+                </Pane>
+                <Pane fx:id="inicioAdmin" layoutX="124.0" layoutY="47.0" prefHeight="288.0" prefWidth="294.0" visible="false">
+                  <children>
+                    <PasswordField fx:id="passContra" layoutX="73.0" layoutY="122.0" prefWidth="200.0" />
+                    <TextField fx:id="txtusername" layoutX="73.0" layoutY="71.0" prefWidth="200.0" />
+                    <Button layoutX="173.0" layoutY="225.0" mnemonicParsing="false" onAction="#confirDatos" text="Iniciar Sesion" />
+                    <Label layoutX="-48.0" layoutY="66.0" prefHeight="31.9609375" prefWidth="125.0" text="Nombre de Usuario" />
+                    <Label layoutX="-22.0" layoutY="125.0" prefWidth="64.0001220703125" text="Contraseña" />
+                    <Label fx:id="confirm" layoutX="15.0" layoutY="188.0" prefHeight="24.0" prefWidth="90.0" textFill="#0021cc" />
                   </children>
                 </Pane>
               </children>
             </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Alumnos">
+        <Tab fx:id="alumnostab" closable="false" disable="true" text="Alumnos">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <TableView layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
+                <TableView blendMode="SRC_OVER" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
                   <columns>
-                    <TableColumn prefWidth="75.0" text="Column X" />
-                    <TableColumn prefWidth="75.0" text="Column X" />
+                    <TableColumn prefWidth="75.0" text="ID" />
+                    <TableColumn prefWidth="75.0" text="Nombres" />
+                    <TableColumn prefWidth="75.0" text="Apellidos" />
+                    <TableColumn prefWidth="75.0" text="Taller" />
+                    <TableColumn prefWidth="75.0" text="Fecha de Inscripción" />
                   </columns>
                 </TableView>
               </children>
