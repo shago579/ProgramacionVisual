@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?scenebuilder-background-color 0xbfbfbfff?>
+
+<AnchorPane id="AnchorPane" minHeight="34.0000084472631" prefHeight="490.0000084472631" prefWidth="553.0" xmlns:fx="http://javafx.com/fxml" fx:controller="rinconcitodelarte.SampleController">
+  <children>
+    <ToolBar id="" blendMode="EXCLUSION" prefHeight="48.000099999997474" prefWidth="553.0">
+      <items>
+        <MenuBar id="Toolbar" fx:id="menu" prefWidth="358.0">
+          <menus>
+            <Menu mnemonicParsing="false" text="Alumnos">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#agregarAlum" text="Nuevo Alumno" fx:id="AgregNueAlum" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Profesores">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Agregar" fx:id="AgregarProfItem" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Administradores">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Agregar" fx:id="AgregarAdmItem" />
+                <MenuItem mnemonicParsing="false" text="Inicio de Sesión" fx:id="iniSesion" />
+                <MenuItem disable="true" mnemonicParsing="false" text="Cerrar Sesión" fx:id="closeSesion" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Ayuda">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Creditos" fx:id="MenItemCreditos" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </items>
+    </ToolBar>
+    <TabPane layoutY="49.0" prefHeight="429.0" prefWidth="553.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab fx:id="pestanaReloj" text="Reloj">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Pane fx:id="recipienteReloj" layoutX="158.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                  <children>
+                    <Circle fill="#bfbfbf" layoutX="99.0" layoutY="101.0" radius="100.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" />
+                    <Line fx:id="hora" endX="-100.0" endY="-81.0" layoutX="199.0" layoutY="102.0" startX="-100.0" />
+                    <Line fx:id="minutero" endX="-59.0" endY="1.0" layoutX="200.0" layoutY="102.0" startX="-100.0" />
+                  </children>
+                </Pane>
+                <Pane layoutX="79.0" layoutY="31.0" prefHeight="330.0" prefWidth="395.0">
+                  <children>
+                    <Label layoutX="69.0" layoutY="43.0" text="Nombre" />
+                    <Label layoutX="69.0" layoutY="94.0" text="Apellido" />
+                    <Label layoutX="69.0" layoutY="157.0" text="Taller" />
+                    <TextField layoutX="134.0" layoutY="40.0" prefWidth="200.0" />
+                    <TextField layoutX="134.0" layoutY="99.0" prefWidth="200.0" />
+                    <ComboBox layoutX="141.0" layoutY="158.0" prefHeight="21.0" prefWidth="187.0" promptText="Elije un Taller...">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Guitarra" />
+                          <String fx:value="Danzas Polinesias" />
+                          <String fx:value="Ritmos Latinos" />
+                          <String fx:value="Pintura" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                    <Button fx:id="aceppt" layoutX="278.0" layoutY="277.0" mnemonicParsing="false" text="Aceptar" />
+                  </children>
+                </Pane>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Alumnos">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
+                  <columns>
+                    <TableColumn prefWidth="75.0" text="Column X" />
+                    <TableColumn prefWidth="75.0" text="Column X" />
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>

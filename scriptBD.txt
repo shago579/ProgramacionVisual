@@ -1,0 +1,7 @@
+CREATE SCHEMA `practica` ;
+
+CREATE  TABLE `practica`.`alumnos` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `nombres` VARCHAR(45) NOT NULL ,
+  `apellidos` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) );
