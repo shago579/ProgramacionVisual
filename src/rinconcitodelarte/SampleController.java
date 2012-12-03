@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
@@ -58,7 +59,16 @@ public class SampleController implements Initializable {
     private Label confirm;
     @FXML
     private MenuItem closeSesion;
-    
+    @FXML
+    private TextField nameAdmin;
+    @FXML
+    private PasswordField passAdmin;
+    @FXML
+    private Pane newAdminPane;
+    @FXML
+    private Label correcto;
+    @FXML
+    private Button okButt;
     
     private Conexion con = null;
     Fechas fecha = new Fechas();
@@ -96,11 +106,11 @@ public class SampleController implements Initializable {
     @FXML
     private void confirDatos(ActionEvent evt){
         java.sql.ResultSet resultado;
-        System.out.println(txtusername.getText());
-        resultado = con.buscar("SELECT pass FROM admin WHERE user ="+txtusername.getText());
+        //resultado = con.buscar("SELECT * FROM admin WHERE user STRCMP("+txtusername.getText()+")");
+        resultado = con.buscar("SELECT * FROM admin WHERE user ='"+txtusername.getText()+"'");
         try {
-            System.out.println(resultado.getString("pass"));
-            if(resultado.getString("pass").equals(passContra.getText())){
+            System.out.println(resultado.getString(3));
+            if(passContra.getText().equals(resultado.getString("pass"))){
                 confirm.setText("Inicio de sesion correcto");
                 confirm.setTextFill(Color.BLUE);
                 AgregNueAlum.setDisable(false);
@@ -111,6 +121,31 @@ public class SampleController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @FXML
+    private void nuevoAdmin(ActionEvent evt){
+        recipienteReloj.setVisible(false);
+        newAdminPane.setVisible(true);
+        pestanaReloj.setText("Nuevo Administrador");
+        
+    }
+    
+    @FXML
+    private void confirmnewAdmin(ActionEvent evt){
+        if(con.insertar("INSERT INTO `admin` (`idadmin`, `user`,`pass`) VALUES("+ultimoAdmin()+",'"+nameAdmin.getText()+"','"+passAdmin.getText()+"');")){
+            okButt.setVisible(true);
+            correcto.setVisible(true);
+            
+        }else{
+            correcto.setText("No se pudo agregar nuevo Administrador");
+            correcto.setVisible(true);
+        }
+    }
+    
+    @FXML
+    private void entendido(ActionEvent evt){
+        pestanaReloj.setText("Reloj");
         
     }
     
@@ -130,6 +165,14 @@ public class SampleController implements Initializable {
             lastId ++;
         }
         
+        return lastId;
+    }
+    
+    private int ultimoAdmin(){
+        int lastId=1;
+        while(con.buscar("SELECT user FROM admin WHERE idadmin=" + lastId)!= null){
+            lastId++;
+        }
         return lastId;
     }
 }
