@@ -100,13 +100,13 @@ public class SampleController implements Initializable {
     private void iniciarSesion(ActionEvent evt){
         recipienteReloj.setVisible(false);
         inicioAdmin.setVisible(true);
+        newAdminPane.setVisible(false);
         pestanaReloj.setText("Inicio Sesion");
     }
     
     @FXML
     private void confirDatos(ActionEvent evt){
         java.sql.ResultSet resultado;
-        //resultado = con.buscar("SELECT * FROM admin WHERE user STRCMP("+txtusername.getText()+")");
         resultado = con.buscar("SELECT * FROM admin WHERE user ='"+txtusername.getText()+"'");
         try {
             System.out.println(resultado.getString(3));
@@ -126,6 +126,7 @@ public class SampleController implements Initializable {
     @FXML
     private void nuevoAdmin(ActionEvent evt){
         recipienteReloj.setVisible(false);
+        inicioAdmin.setVisible(false);
         newAdminPane.setVisible(true);
         pestanaReloj.setText("Nuevo Administrador");
         
@@ -138,10 +139,11 @@ public class SampleController implements Initializable {
             correcto.setVisible(true);
             
         }else{
+            System.out.println("Contraseña Incorrecta");
             correcto.setText("No se pudo agregar nuevo Administrador");
             correcto.setVisible(true);
         }
-    }
+    } 
     
     @FXML
     private void entendido(ActionEvent evt){

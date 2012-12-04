@@ -94,7 +94,7 @@
                     <Label layoutX="50.0" layoutY="162.0" text="Confirmar Contraseña" />
                     <Button layoutX="268.0" layoutY="270.0" mnemonicParsing="false" onAction="#confirmnewAdmin" text="Confirmar" />
                     <Button fx:id="okButt" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" onAction="#entendido" text="Ok" visible="false" />
-                    <Label fx:id="correcto" layoutX="-46.0" layoutY="273.0" prefWidth="214.00009999999747" text="Se ha agregado Admin Correctamente" visible="false" />
+                    <Label fx:id="correcto" layoutX="34.0" layoutY="238.0" prefWidth="306.9999168945287" text="Se ha agregado Admin Correctamente" visible="false" />
                   </children>
                 </Pane>
               </children>
@@ -105,13 +105,13 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <TableView blendMode="SRC_OVER" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
+                <TableView fx:id="tablaAlumnos" blendMode="SRC_OVER" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
                   <columns>
-                    <TableColumn prefWidth="75.0" text="ID" />
-                    <TableColumn prefWidth="75.0" text="Nombres" />
-                    <TableColumn prefWidth="75.0" text="Apellidos" />
-                    <TableColumn prefWidth="75.0" text="Taller" />
-                    <TableColumn prefWidth="75.0" text="Fecha de Inscripción" />
+                    <TableColumn prefWidth="75.0" text="ID" fx:id="columID" />
+                    <TableColumn prefWidth="75.0" text="Nombres" fx:id="columNombres" />
+                    <TableColumn prefWidth="75.0" text="Apellidos" fx:id="columApelli" />
+                    <TableColumn prefWidth="75.0" text="Taller" fx:id="columTaller" />
+                    <TableColumn prefWidth="120.0" text="Fecha de Inscripción" fx:id="columInscrip" />
                   </columns>
                 </TableView>
               </children>

@@ -122,9 +122,8 @@ public class Conexion {
             return null;
         }
     }
-    
-    /**
-     * Busca la cantidad de registros que hay en la tabla especificada.
+   
+   /* Busca la cantidad de registros que hay en la tabla especificada.
      * Devuelve -1 en caso de haber algún error
      * @param tabla La tabla donde contar registros
      * @return La cantidad de registros encontrados o -1 si hay algún error
