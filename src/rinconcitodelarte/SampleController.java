@@ -2,9 +2,11 @@ package rinconcitodelarte;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,10 +17,12 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import javafx.util.Callback;
 
 /**
  *
@@ -69,7 +73,20 @@ public class SampleController implements Initializable {
     private Label correcto;
     @FXML
     private Button okButt;
-    
+    /***Cosas de la tabla***/
+    @FXML
+    private TableView tablaAlumnos;
+    @FXML
+    private TableColumn columId;
+    @FXML
+    private TableColumn columNombres;
+    @FXML
+    private TableColumn columApelli;
+    @FXML
+    private TableColumn columTaller;
+    @FXML
+    private TableColumn columInscrip;
+    /***Terminan las cosas de las tablas***/
     private Conexion con = null;
     Fechas fecha = new Fechas();
     //private Date fechaAct = new Date();
@@ -117,6 +134,7 @@ public class SampleController implements Initializable {
                 AgregarProfItem.setDisable(false);
                 alumnostab.setDisable(false);
                 closeSesion.setDisable(false);
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,7 +178,6 @@ public class SampleController implements Initializable {
         }
     }
     
-    
     private int ultimoId(){
         int lastId=1;
         while(con.buscar("SELECT nombres FROM alumnos WHERE id=" + lastId) != null){
@@ -177,4 +194,10 @@ public class SampleController implements Initializable {
         }
         return lastId;
     }
+    
+    private void llenarTabla(){
+        columId.setCellValueFactory(new Callback<columId,ultimoId()+"">, ObservableValue<ultimoId()+"">>);
+        
+    }
+    
 }
