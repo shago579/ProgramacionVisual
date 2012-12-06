@@ -24,4 +24,15 @@ public class Fechas {
         return fecha;
     }
     
+    public int gethoras(){
+        return Cal.get(Calendar.HOUR);
+    }
+    
+    public int getminutos(){
+        return Cal.get(Calendar.MINUTE);
+    }    
+    
+    public int getsegundos(){
+        return Cal.get(Calendar.SECOND);
+    }
 }

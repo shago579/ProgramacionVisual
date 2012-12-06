@@ -5,24 +5,21 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?scenebuilder-background-color 0xbfbfbfff?>
 
-<AnchorPane id="AnchorPane" minHeight="34.0000084472631" prefHeight="490.0000084472631" prefWidth="553.0" xmlns:fx="http://javafx.com/fxml" fx:controller="rinconcitodelarte.SampleController">
+<AnchorPane id="AnchorPane" minHeight="34.0000084472631" prefHeight="490.0000084472631" prefWidth="679.0" xmlns:fx="http://javafx.com/fxml" fx:controller="rinconcitodelarte.SampleController">
   <children>
-    <ToolBar id="" blendMode="EXCLUSION" prefHeight="48.000099999997474" prefWidth="553.0">
+    <ToolBar id="" blendMode="EXCLUSION" prefHeight="49.0" prefWidth="679.0">
       <items>
         <MenuBar id="Toolbar" fx:id="menu" prefWidth="358.0">
           <menus>
             <Menu mnemonicParsing="false" text="Alumnos">
               <items>
                 <MenuItem disable="true" mnemonicParsing="false" onAction="#agregarAlum" text="Nuevo Alumno" fx:id="AgregNueAlum" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Profesores">
-              <items>
-                <MenuItem disable="true" mnemonicParsing="false" style="" text="Nuevo Profesor" fx:id="AgregarProfItem" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Administradores">
@@ -34,24 +31,26 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
               <items>
-                <MenuItem mnemonicParsing="false" text="Creditos" fx:id="MenItemCreditos" />
+                <MenuItem mnemonicParsing="false" onAction="#abrirCreditos" text="Creditos" fx:id="MenItemCreditos" />
               </items>
             </Menu>
           </menus>
         </MenuBar>
       </items>
     </ToolBar>
-    <TabPane layoutY="49.0" prefHeight="429.0" prefWidth="553.0" tabClosingPolicy="UNAVAILABLE">
+    <TabPane layoutY="49.0" prefHeight="429.0" prefWidth="679.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
-        <Tab fx:id="pestanaReloj" text="Reloj">
+        <Tab fx:id="pestanaReloj" text="Inicio">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Pane fx:id="recipienteReloj" layoutX="158.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0">
+                <Pane fx:id="recipienteReloj" layoutX="143.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0">
                   <children>
-                    <Circle fill="#bfbfbf" layoutX="99.0" layoutY="101.0" radius="100.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" />
-                    <Line fx:id="hora" endX="-100.0" endY="-81.0" layoutX="199.0" layoutY="102.0" startX="-100.0" />
-                    <Line fx:id="minutero" endX="-59.0" endY="1.0" layoutX="200.0" layoutY="102.0" startX="-100.0" />
+                    <ImageView fitHeight="388.8769870334201" fitWidth="303.0" layoutX="33.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../RinconcitoDelArte.jpg" preserveRatio="false" smooth="false" />
+                      </image>
+                    </ImageView>
                   </children>
                 </Pane>
                 <Pane fx:id="panelDatos" layoutX="79.0" layoutY="31.0" prefHeight="330.0" prefWidth="395.0" visible="false">
@@ -97,20 +96,63 @@
                     <Label fx:id="correcto" layoutX="34.0" layoutY="238.0" prefWidth="306.9999168945287" text="Se ha agregado Admin Correctamente" visible="false" />
                   </children>
                 </Pane>
+                <Pane fx:id="creditos" layoutX="57.0" layoutY="14.0" prefHeight="382.0" prefWidth="579.0" visible="false">
+                  <children>
+                    <ImageView fitHeight="126.0" fitWidth="126.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../Logo%20UP.png" preserveRatio="false" smooth="false" />
+                      </image>
+                    </ImageView>
+                    <Label layoutX="170.0" layoutY="15.0" text="Universidad Politécnica de Chiapas">
+                      <font>
+                        <Font name="System Bold" size="20.0" />
+                      </font>
+                    </Label>
+                    <Label layoutX="173.0" layoutY="255.0" text="Ing. en Desarrallo de Software">
+                      <font>
+                        <Font name="System Bold" size="16.0" fx:id="x1" />
+                      </font>
+                    </Label>
+                    <Label layoutX="173.0" layoutY="59.0" text="Catedrático:">
+                      <font>
+                        <Font name="System Italic" size="16.0" fx:id="x2" />
+                      </font>
+                    </Label>
+                    <Label layoutX="173.0" layoutY="81.0" text="Dr. Juan Carlos López Pimentel">
+                      <font>
+                        <Font name="System Bold" size="14.0" />
+                      </font>
+                    </Label>
+                    <Label font="$x2" layoutX="173.0" layoutY="114.0" text="Alumnos:" />
+                    <Label layoutX="173.0" layoutY="146.0" text="Natsumi Angel López">
+                      <font>
+                        <Font size="14.0" fx:id="x3" />
+                      </font>
+                    </Label>
+                    <Label font="$x3" layoutX="173.0" layoutY="172.0" text="Ulises Ruiz López" />
+                    <Label font="$x3" layoutX="173.0" layoutY="197.0" text="Luis Santiago Vázquez Mancilla" />
+                    <Label font="$x3" layoutX="467.0" layoutY="149.0" text="113055" />
+                    <Label font="$x3" layoutX="467.0" layoutY="197.0" text="113360" />
+                    <Label font="$x3" layoutX="467.0" layoutY="175.0" text="113247" />
+                    <Label font="$x2" layoutX="174.0" layoutY="234.0" text="Programa Académico:" />
+                    <Label font="$x1" layoutX="256.0" layoutY="292.0" text="Programación Visual - 4°A" />
+                    <Label font="$x2" layoutX="170.0" layoutY="336.0" text="Suchiapa, Chiapas. A 5 de Diciembre de 2012." />
+                  </children>
+                </Pane>
               </children>
             </AnchorPane>
           </content>
         </Tab>
         <Tab fx:id="alumnostab" closable="false" disable="true" text="Alumnos">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="665.0">
               <children>
-                <TableView fx:id="tablaAlumnos" blendMode="SRC_OVER" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="525.0">
+                <TableView fx:id="tablaAlumnos" blendMode="SRC_OVER" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="642.0">
                   <columns>
-                    <TableColumn prefWidth="75.0" text="ID" fx:id="columID" />
-                    <TableColumn prefWidth="75.0" text="Nombres" fx:id="columNombres" />
-                    <TableColumn prefWidth="75.0" text="Apellidos" fx:id="columApelli" />
-                    <TableColumn prefWidth="75.0" text="Taller" fx:id="columTaller" />
+                    <TableColumn prefWidth="10.0" style="" text="ID" fx:id="columID" />
+                    <TableColumn prefWidth="125.0" text="Nombres" fx:id="columNombres" />
+                    <TableColumn prefWidth="130.0" text="Apellidos" fx:id="columApelli" />
+                    <TableColumn prefWidth="110.0" text="Taller" fx:id="columTaller" />
                     <TableColumn prefWidth="120.0" text="Fecha de Inscripción" fx:id="columInscrip" />
                   </columns>
                 </TableView>
